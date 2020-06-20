@@ -68,7 +68,7 @@ We can look at the feature distribution for our false positive/false negatives/t
 
 ![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/violin_tn.png)
 
-![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/prediction_group_comparisons.png)
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/prediction_group_comparisons.PNG)
 
 The false-positive and false-negative cases seem to buck these trends to some degree. 
 The cases we are most concerned with - false negatives - seems to have low clump size but high uniformity, something that confused the classifier. It's possible that a non-linear model, like a RFC, could pick up on this type of interaction more easily. But we also only had 3 false negatives in our training set total out of ~120 total positive cases, so the statistics are small. Due to the ease of interpretability, I'm going to stick with the linear model for now although further performance gains might be possible
