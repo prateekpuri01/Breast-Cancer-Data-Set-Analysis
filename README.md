@@ -4,6 +4,6 @@ Code to construct a benign/non-benign classifier for breast cancer tumors. Data 
 This notebook is a cookbook on how to get a class-imbalanced classifier up and running 
 
 
-##Step 1: Understand the data
+## Step 1: Understand the data
 
 
