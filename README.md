@@ -23,8 +23,11 @@ Analyzing a training set of the data, we can observe the distribution of our dat
 
 
 ![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/cell_size_hist.png)
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/clump_thickness.png)
 
 We also want to remove any multicolinearity of features before constructing our model. We can look at a R^2 matrix for our features and also look the VIF factors for our features. After analyzing the data, both size and shape uniformity were high correlated (VIF>15), so I removed shape uniformity from the feauture set. After doing this, all VIF's for features are below 10. I removed shape uniformity instead of size uniformity because size uniformity had a greater correaltion with class outcome and thus seemed more important for classification
+
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/Feature_Matrix.png)
 
 ## Step 3: Prepare data for modeling
 
@@ -44,16 +47,26 @@ One metric to consider is recall.
 
 On both my validation and test set, I saw a recall of .97 for my malicious tumor class, while maintained a precision of .9 for my malicious class on my test set. The fact that there appears to be little variance between validation/test sets is encouraging. Looking at the ROC, I see a AUC of .98 on my test set, which is also encouraging 
 
+
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/ROC.png)
+
+
 We can also look at how important each feature is. For this, I elected to use sklearn's permutation feature importance feature. Which essentially scrambles the data for a particular model and then computes how a metric of choice, i.e. recall, changes for the scrambled data. The idea is if your model performance didn't change much when a feature was scrambled (i.e. values for this feature were randomly chosen from feature set), the feature must not have been very important. 
 
 Here is plot displaying the relative importance of each feature according to this method, which turns out to offer a slightly different result than if you were just looking at the coefficients of the LR model (perhaps due to a small degree of multi-colinearity existing in the data)
 
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/feature_importance_PT.png)
 
 As we suspected from our EDA, tumor size and uniformity seem to dominate the classifier
 
 ## Step 6: Failure cases
 
 We can look at the feature distribution for our false positive/false negatives/true positives/true negatives to get a sense of where our model failed and where it succeeded. As seen from the violin plots, the true positives seems to have the common theme of having small tumor sizes and low tumor uniformity, while the true negatives are the opposite. 
+
+
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/violin_tp.png)
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/violin_tn.png)
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/prediction_group_comparisons.png)
 
 The false-positive and false-negative cases seem to buck these trends to some degree. 
 The cases we are most concerned with - false negatives - seems to have low clump size but high uniformity, something that confused the classifier. It's possible that a non-linear model, like a RFC, could pick up on this type of interaction more easily. But we also only had 3 false negatives in our training set total out of ~120 total positive cases, so the statistics are small. Due to the ease of interpretability, I'm going to stick with the linear model for now although further performance gains might be possible
