@@ -22,7 +22,7 @@ This mistake is easily corrected by post-processing. There are missing data beyo
 Analyzing a training set of the data, we can observe the distribution of our data and how that distribution changes between classes. Right off the bat, tumor size and uniformity seems to be highly indicative of tumor class.
 
 
-![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/plots/cell_size_hist.png)
+![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/cell_size_hist.png)
 
 We also want to remove any multicolinearity of features before constructing our model. We can look at a R^2 matrix for our features and also look the VIF factors for our features. After analyzing the data, both size and shape uniformity were high correlated (VIF>15), so I removed shape uniformity from the feauture set. After doing this, all VIF's for features are below 10. I removed shape uniformity instead of size uniformity because size uniformity had a greater correaltion with class outcome and thus seemed more important for classification
 
