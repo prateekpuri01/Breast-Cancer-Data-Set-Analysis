@@ -65,7 +65,9 @@ We can look at the feature distribution for our false positive/false negatives/t
 
 
 ![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/violin_tp.png)
+
 ![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/violin_tn.png)
+
 ![alt text](https://github.com/prateekpuri01/Breast-Cancer-Data-Set-Analysis/blob/master/Plots/prediction_group_comparisons.png)
 
 The false-positive and false-negative cases seem to buck these trends to some degree. 
